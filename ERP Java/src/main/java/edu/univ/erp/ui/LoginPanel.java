@@ -37,7 +37,7 @@ public class LoginPanel extends JPanel {
         this.mainFrame = frame;
         this.authService = new AuthService();
 
-        // Load the image file from resources
+
         try {
             URL imageUrl = getClass().getResource("/background.png");
             if (imageUrl != null) {
@@ -52,7 +52,7 @@ public class LoginPanel extends JPanel {
         setLayout(new BorderLayout());
         setOpaque(false);
 
-        // --- TOP BAR (Theme Toggle) ---
+        
         JPanel topBar = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         topBar.setOpaque(false);
 

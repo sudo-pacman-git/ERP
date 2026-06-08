@@ -1,75 +1,128 @@
 # University ERP Desktop Application
 
-**A secure, role-based academic management system developed using Java Swing and MySQL.**
+A secure, role-based academic management system developed using Java Swing, JDBC, and MySQL/MariaDB.
 
-This project is a comprehensive desktop application designed to streamline university department operations. Developed as a final project for the Advanced Programming (AP) course, it handles the complete lifecycle of academic management, including user authentication, course enrollment, section management, and grading.
+This comprehensive desktop application streamlines university department operations, handling the complete lifecycle of academic management, including user authentication, course enrollment, section management, and grading.
 
-## 🛠 Technology Stack
+### Technology Stack
 
 * **Language:** Java (JDK 21)
-* **GUI Framework:** Java Swing (Custom UI components)
-* **Database:** MySQL 8.0
-* **Build Tool:** Maven (Shade Plugin for executable generation)
+* **GUI Framework:** Java Swing (FlatLaf for modern UI rendering, MigLayout for responsive design)
+* **Database Management:** MySQL / MariaDB via standard JDBC
+* **Connection Pooling:** HikariCP
+* **Security:** jBCrypt
+* **Build System:** Maven (maven-shade-plugin)
 * **Architecture:** MVC Pattern (Model-View-Controller)
 
-##  Key Features
+### Key Features
 
-* **Role-Based Access Control (RBAC):** Distinct interfaces and permissions for three user types:
-    * **Admins:** Manage users, force password resets, and oversee system data.
-    * **Instructors:** Manage sections and assign grades to enrolled students.
-    * **Students:** View available sections, enroll in courses, and view transcripts.
-* **Secure Authentication:** Custom login validation with temporary password logic for first-time users.
-* **Data Integrity:** Normalized MySQL schema ensuring consistent relationships between students, sections, and grades.
+* **Role-Based Access Control (RBAC):** Distinct interfaces and privileges for three user types:
+    * **Admins:** Manage user profiles, system configurations, courses, and sections.
+    * **Instructors:** Manage assigned course sections and input student grades.
+    * **Students:** Browse the course catalog, manage enrollments, and view academic transcripts.
+* **Secure Authentication:** Passwords are cryptographically hashed using BCrypt.
+* **Automated Bootstrapping:** Application automatically verifies and inserts default seed users upon initial execution.
+* **Data Integrity:** Fully normalized relational database schema with enforced foreign key constraints and cascading deletions.
 
 ---
 
-##  Setup & Installation
+## Screenshots
+
+<details>
+<summary>Click to expand and view application screenshots</summary>
+<br>
+
+<div align="center">
+  <img src="screenshots/Screenshot_20260608_155035.png" width="45%" alt="Application Screenshot">
+  <img src="screenshots/Screenshot_20260608_155158.png" width="45%" alt="Application Screenshot">
+  <img src="screenshots/Screenshot_20260608_155448.png" width="45%" alt="Application Screenshot">
+  <img src="screenshots/Screenshot_20260608_155528.png" width="45%" alt="Application Screenshot">
+  <img src="screenshots/Screenshot_20260608_155559.png" width="45%" alt="Application Screenshot">
+  <img src="screenshots/Screenshot_20260608_163233.png" width="45%" alt="Application Screenshot">
+  <img src="screenshots/Screenshot_20260608_165100.png" width="45%" alt="Application Screenshot">
+  <img src="screenshots/Screenshot_20260608_165954.png" width="45%" alt="Application Screenshot">
+  <img src="screenshots/Screenshot_20260608_170051.png" width="45%" alt="Application Screenshot">
+  <img src="screenshots/Screenshot_20260608_170112.png" width="45%" alt="Application Screenshot">
+</div>
+
+</details>
+
+---
+
+## Setup & Installation
 
 ### 1. Prerequisites
 
-| Software | Version | Purpose |
-| :--- | :--- | :--- |
-| **Java Development Kit (JDK)** | **21+** | Required to run the application. |
-| **MySQL Server** | **8.0+** | Required to host the database. |
+* **Java Development Kit (JDK):** Version 21 or higher
+* **Apache Maven:** Version 3.8 or higher
+* **Database:** MySQL 8.0+ or MariaDB 10.5+
 
-### 2. Database Setup (Crucial First Step)
+### 2. Database Initialization
+The application requires two logical databases (`university_auth` and `university_erp`). Create the schemas and structural tables by executing the provided SQL script against your database server:
+```bash
+mysql -u root -p < schema_setup.sql
 
-1.  **Execute SQL Script:** Open `schema_setup.sql` in MySQL Workbench and execute the entire script. This creates the necessary tables (`users_auth`, `students`, `sections`) and inserts seed data.
-2.  **Configure Connection:** Ensure your `DBConnection.java` file matches your local MySQL configuration:
+```
 
-| Setting | Auth Database | ERP Database |
-| :--- | :--- | :--- |
-| **URL Base** | `jdbc:mysql://localhost:3306/university_auth` | `jdbc:mysql://localhost:3306/university_erp` |
-| **Username** | `root` | `root` |
-| **Password** | *(Your Local MySQL Password)* | *(Your Local MySQL Password)* |
+### 3. Application Configuration
 
-### 3. Running the Application
+Update the `src/main/resources/application.properties` file with your local database credentials. This file also dictates the default user accounts that will be automatically generated upon the application's first launch.
 
-The application is provided as a single, self-contained executable JAR.
+```properties
+# --- Database Connection ---
+db.auth.url=jdbc:mysql://localhost:3306/university_auth
+db.erp.url=jdbc:mysql://localhost:3306/university_erp
+db.username=your_db_username
+db.password=your_db_password
 
-1.  Navigate your terminal to the **`target`** folder of the project.
-2.  Execute the following command:
+# --- Default Seed Users ---
+seed.admin.username=admin1
+seed.admin.password=password123
+seed.instructor.username=inst1
+seed.instructor.password=password123
+seed.student.username=stu1
+seed.student.password=password123
 
-    ```bash
-    java -jar univ-erp-java-swing-executable.jar
-    ```
-
----
-
-##  Default Login Credentials
-
-Use these credentials to test the specific role functionalities.
-
-| Role | Username | Password | Notes |
-| :--- | :--- | :--- | :--- |
-| **Admin** | `admin1` | `password123` | Full system control. |
-| **Instructor** | `inst1` | `password123` | Assigned to all initial sections. |
-| **Student** | `stu1` | `password123` | Used for acceptance tests. |
-| **Temporary** | *(Any User)* | `temp123` | Temporary password if Admin forces a reset. |
+```
 
 ---
 
-##  Contributors
+## Compilation & Execution
+
+### Building from Source
+
+Compile the application and bundle all dependencies into a single executable JAR using Maven. Execute this command in the project root:
+
+```bash
+mvn clean package
+
+```
+
+### Injecting Demo Data (Optional)
+
+To evaluate the system with a fully populated academic environment, execute the demonstration data seeder. This utility safely injects instructors, courses, active sections, enrolled students, and realistic gradebook data. This is optional, it was used just to test the application while developing.
+
+```bash
+mvn exec:java -Dexec.mainClass="edu.univ.erp.util.DemoSeedData"
+
+```
+
+### Running the Application
+
+Launch the precompiled executable JAR from the `target/` directory:
+
+```bash
+java -jar target/univ-erp-java-swing-executable.jar
+
+```
+
+---
+
+## Contributors
 
 * **Harsh Panchal**
 * **Aniket Kumar Rai**
+
+```
+
+```

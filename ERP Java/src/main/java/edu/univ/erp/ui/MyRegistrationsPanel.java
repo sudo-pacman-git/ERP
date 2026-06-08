@@ -73,7 +73,7 @@ public class MyRegistrationsPanel extends JPanel {
                     row.getInstructorName(),
                     row.getSchedule(),
                     row.getRoom(),
-                    row.getMyGrade() // Shows A, B, or -
+                    row.getMyGrade() 
             });
         }
     }

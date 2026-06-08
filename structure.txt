@@ -1,0 +1,115 @@
+.
+├── ERP Java
+│   ├── dependency-reduced-pom.xml
+│   ├── pom.xml
+│   ├── schema_setup.sql
+│   ├── src
+│   │   └── main
+│   │       ├── java
+│   │       │   └── edu
+│   │       │       └── univ
+│   │       │           └── erp
+│   │       │               ├── auth
+│   │       │               │   └── PasswordUtil.java
+│   │       │               ├── domain
+│   │       │               │   ├── GradeRow.java
+│   │       │               │   ├── SectionRow.java
+│   │       │               │   └── User.java
+│   │       │               ├── MainFrame.java
+│   │       │               ├── service
+│   │       │               │   ├── AdminService.java
+│   │       │               │   ├── AuthService.java
+│   │       │               │   ├── InstructorService.java
+│   │       │               │   ├── SettingsService.java
+│   │       │               │   └── StudentService.java
+│   │       │               ├── ui
+│   │       │               │   ├── AddCourseDialog.java
+│   │       │               │   ├── AddUserDialog.java
+│   │       │               │   ├── AdminDashboardPanel.java
+│   │       │               │   ├── ChangePasswordDialog.java
+│   │       │               │   ├── EditSectionDialog.java
+│   │       │               │   ├── GradebookDialog.java
+│   │       │               │   ├── InstructorDashboardPanel.java
+│   │       │               │   ├── LoginPanel.java
+│   │       │               │   ├── ManageUsersPanel.java
+│   │       │               │   ├── MyRegistrationsPanel.java
+│   │       │               │   └── StudentDashboardPanel.java
+│   │       │               └── util
+│   │       │                   ├── DatabaseSeeder.java
+│   │       │                   ├── DBConnection.java
+│   │       │                   └── DemoSeedData.java
+│   │       └── resources
+│   │           ├── application.properties
+│   │           └── background.png
+│   └── target
+│       ├── classes
+│       │   ├── application.properties
+│       │   ├── background.png
+│       │   └── edu
+│       │       └── univ
+│       │           └── erp
+│       │               ├── auth
+│       │               │   └── PasswordUtil.class
+│       │               ├── domain
+│       │               │   ├── GradeRow.class
+│       │               │   ├── SectionRow.class
+│       │               │   └── User.class
+│       │               ├── MainFrame$1.class
+│       │               ├── MainFrame.class
+│       │               ├── service
+│       │               │   ├── AdminService.class
+│       │               │   ├── AuthService.class
+│       │               │   ├── InstructorService.class
+│       │               │   ├── SettingsService.class
+│       │               │   └── StudentService.class
+│       │               ├── ui
+│       │               │   ├── AddCourseDialog$1.class
+│       │               │   ├── AddCourseDialog.class
+│       │               │   ├── AddUserDialog.class
+│       │               │   ├── AdminDashboardPanel.class
+│       │               │   ├── ChangePasswordDialog.class
+│       │               │   ├── EditSectionDialog.class
+│       │               │   ├── GradebookDialog$1.class
+│       │               │   ├── GradebookDialog.class
+│       │               │   ├── InstructorDashboardPanel$1.class
+│       │               │   ├── InstructorDashboardPanel.class
+│       │               │   ├── LoginPanel.class
+│       │               │   ├── ManageUsersPanel$1.class
+│       │               │   ├── ManageUsersPanel.class
+│       │               │   ├── MyRegistrationsPanel$1.class
+│       │               │   ├── MyRegistrationsPanel.class
+│       │               │   ├── StudentDashboardPanel$CatalogPanel$1.class
+│       │               │   ├── StudentDashboardPanel$CatalogPanel$2.class
+│       │               │   ├── StudentDashboardPanel$CatalogPanel.class
+│       │               │   └── StudentDashboardPanel.class
+│       │               └── util
+│       │                   ├── DatabaseSeeder.class
+│       │                   ├── DBConnection.class
+│       │                   └── DemoSeedData.class
+│       ├── generated-sources
+│       │   └── annotations
+│       ├── maven-archiver
+│       │   └── pom.properties
+│       ├── maven-status
+│       │   └── maven-compiler-plugin
+│       │       └── compile
+│       │           └── default-compile
+│       │               ├── createdFiles.lst
+│       │               └── inputFiles.lst
+│       ├── univ-erp-java-swing-1.0-SNAPSHOT.jar
+│       └── univ-erp-java-swing-executable.jar
+├── README.md
+├── screenshots
+│   ├── Screenshot_20260608_155035.png
+│   ├── Screenshot_20260608_155158.png
+│   ├── Screenshot_20260608_155448.png
+│   ├── Screenshot_20260608_155528.png
+│   ├── Screenshot_20260608_155559.png
+│   ├── Screenshot_20260608_163233.png
+│   ├── Screenshot_20260608_165100.png
+│   ├── Screenshot_20260608_165954.png
+│   ├── Screenshot_20260608_170051.png
+│   └── Screenshot_20260608_170112.png
+└── structure.txt
+
+32 directories, 81 files

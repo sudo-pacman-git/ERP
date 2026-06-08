@@ -53,13 +53,17 @@ public class MainFrame extends JFrame {
     }
 
     public static void main(String[] args) {
+        // 1. Initialize Seed Data
+        edu.univ.erp.util.DatabaseSeeder.initializeSeedData();
+
+        // 2. Initialize Look and Feel
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
         }
 
-
+        // 3. Launch UI
         SwingUtilities.invokeLater(() -> {
             new MainFrame().setVisible(true);
         });

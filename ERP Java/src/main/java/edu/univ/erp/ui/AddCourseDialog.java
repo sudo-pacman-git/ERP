@@ -20,7 +20,7 @@ public class AddCourseDialog extends JDialog {
     public AddCourseDialog(Frame owner) {
         super(owner, "Manage Courses & Sections", true);
         this.adminService = new AdminService();
-        this.ownerFrame = owner; // Store the frame reference
+        this.ownerFrame = owner; 
 
         setLayout(new BorderLayout());
         setSize(850, 600);

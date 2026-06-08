@@ -105,15 +105,12 @@ public class GradebookDialog extends JDialog {
         if (table.isEditing()) table.getCellEditor().stopCellEditing();
 
         try {
-            // CRITICAL FIX: CHECK MAINTENANCE MODE FIRST
             if (settingsService.isMaintenanceModeOn()) {
                 JOptionPane.showMessageDialog(this, "Operation blocked: System is in Maintenance Mode.",
                         "Access Denied", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            // END CRITICAL FIX
-
-            // 1. VALIDATION LOOP
+            
             for (int i = 0; i < rows.size(); i++) {
                 GradeRow rowObj = rows.get(i);
 
@@ -121,7 +118,6 @@ public class GradebookDialog extends JDialog {
                 double mid = parseScore(table.getValueAt(i, 3));
                 double exam = parseScore(table.getValueAt(i, 4));
 
-                // Validation Rules (Max 20, 30, 50)
                 if (quiz < 0 || quiz > 20) {
                     showError(rowObj.getStudentName(), "Quiz score must be between 0 and 20.");
                     return;
@@ -136,7 +132,6 @@ public class GradebookDialog extends JDialog {
                 }
             }
 
-            // 2. SAVING LOOP (Only runs if Maintenance is OFF and Validation Passes)
             for (int i = 0; i < rows.size(); i++) {
                 GradeRow rowObj = rows.get(i);
 

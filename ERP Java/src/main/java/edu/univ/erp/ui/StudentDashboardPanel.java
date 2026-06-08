@@ -54,7 +54,7 @@ public class StudentDashboardPanel extends JPanel {
         private final StudentService studentService = new StudentService();
         private final DefaultTableModel tableModel;
         private final JTable table;
-        private final TableRowSorter<DefaultTableModel> sorter; // For Live Search
+        private final TableRowSorter<DefaultTableModel> sorter;
         private List<SectionRow> currentRows;
         private final User user;
 

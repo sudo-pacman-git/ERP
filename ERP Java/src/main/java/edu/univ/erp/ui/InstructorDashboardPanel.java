@@ -49,7 +49,7 @@ public class InstructorDashboardPanel extends JPanel {
 
         add(header, BorderLayout.NORTH);
 
-        // 2. Content
+
         JPanel content = new JPanel(new MigLayout("fill, insets 20", "[grow]", "[][grow][]"));
         content.add(new JLabel("My Assigned Sections"), "wrap");
 

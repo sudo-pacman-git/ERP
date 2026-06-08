@@ -45,7 +45,7 @@ public class AdminDashboardPanel extends JPanel {
 
         JPanel managePanel = new JPanel(new MigLayout("insets 15", "[fill, 220]10[fill, 250]"));
         managePanel.setBorder(BorderFactory.createTitledBorder("Administration Actions"));
-        managePanel.setOpaque(false); // Make transparent
+        managePanel.setOpaque(false); 
 
 
         JButton addUserBtn = new JButton("Add New User");
@@ -72,7 +72,7 @@ public class AdminDashboardPanel extends JPanel {
 
         JPanel controlPanel = new JPanel(new MigLayout("insets 15", "[]15[]"));
         controlPanel.setBorder(BorderFactory.createTitledBorder("System Controls"));
-        controlPanel.setOpaque(false); // Make transparent
+        controlPanel.setOpaque(false); 
 
         JLabel maintenanceLabel = new JLabel("Maintenance Mode:");
         maintenanceLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));

@@ -52,7 +52,7 @@ public class InstructorService {
         try {
             conn = DBConnection.getErpConnection();
 
-            // --- FIX IS HERE: We now fetch 'first_name' instead of just 'user_id' ---
+            
             String stuSql = """
                 SELECT e.enrollment_id, s.roll_no, s.first_name 
                 FROM enrollments e
@@ -65,14 +65,14 @@ public class InstructorService {
                 stmt.setInt(1, sectionId);
                 ResultSet rs = stmt.executeQuery();
                 while (rs.next()) {
-                    // Get the real name from DB. If null, fallback to "Unknown"
+                    
                     String realName = rs.getString("first_name");
                     if (realName == null || realName.isEmpty()) realName = "Student";
 
                     rows.add(new GradeRow(
                             rs.getInt("enrollment_id"),
                             rs.getString("roll_no"),
-                            realName // <--- Using the real name now!
+                            realName
                     ));
                 }
             }
